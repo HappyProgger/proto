@@ -1,0 +1,48 @@
+syntax ="proto3";
+
+
+package auth;
+
+
+option go_package =  "happy.sso.v1;ssov1";
+
+
+service Auth {
+  rpc Login(LoginRequest) returns (LoginResponse) {}
+  rpc Register(RegisterRequest) returns (RegisterResponse) {}
+  rpc IsAdmin(IsAdminRequest) returns (IsAdminResponse) {}
+}
+
+
+message LoginRequest{
+  string email = 1;
+  string password = 2;
+}
+
+
+message LoginResponse{
+  int64 user_id = 1;
+}
+
+
+message RegisterRequest{
+  string email = 1;
+  string password = 2;
+  string service_id = 3;
+
+}
+
+
+message RegisterResponse{
+  int64 jwt_token = 1;
+}
+
+
+message IsAdminRequest{
+  int64 user_id = 1;
+}
+
+
+message IsAdminResponse{
+  bool is_admin = 1;
+}
