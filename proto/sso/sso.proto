@@ -4,7 +4,7 @@ syntax ="proto3";
 package auth;
 
 
-option go_package =  "happy.sso.v1;ssov1";
+option go_package =  "happy.sso.v1";
 
 
 service Auth {
@@ -28,13 +28,13 @@ message RegisterResponse{
 message LoginRequest{
   string email = 1;
   string password = 2;
-  string service_id = 3;
+  int64 service_id = 3;
 
 }
 
 
 message LoginResponse{
-  int64 jwt_token = 1;
+  string jwt_token = 1;
 }
 
 
